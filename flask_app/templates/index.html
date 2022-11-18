@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://mdbcdn.b-cdn.net/wp-content/themes/mdbootstrap4/docs-app/css/dist/mdb5/standard/core.min.css">
+    <link rel='stylesheet' id='roboto-subset.css-css'  href='https://mdbcdn.b-cdn.net/wp-content/themes/mdbootstrap4/docs-app/css/mdb5/fonts/roboto-subset.css?ver=3.9.0-update.5' type='text/css' media='all' />
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='my_style.css') }}">
+    <title>Login Page</title>
+</head>
+<body>
+    <div class="container">
+        <div class="top">
+            <h1 class="center">Welcome to the Meeple Network!</h1>
+            <h2 class="blue center">A place for board gamers to find other gamers in their area!</h2>
+        </div>
+
+        <div class="container_flex">
+            <img src="{{ url_for('static', filename='icons/Meeple.png') }}" alt="The Meeple Network" height=400px>
+            <div class="login_box">
+
+            <!-- Pills navs -->            
+                <ul class="nav nav-pills nav-justified mb-3" id="ex1" role="tablist">
+                    <li class="nav-item" role="presentation">
+                    <a class="nav-link active" id="tab-login" data-mdb-toggle="pill" href="#pills-login" role="tab"
+                        aria-controls="pills-login" aria-selected="true">Login</a>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                    <a class="nav-link" id="tab-register" data-mdb-toggle="pill" href="#pills-register" role="tab"
+                        aria-controls="pills-register" aria-selected="false">Register</a>
+                    </li>
+                </ul>
+            <!-- Pills navs -->
+                
+            <!-- Pills content -->
+                <div class="tab-content">
+                    <div class="tab-pane fade show active" id="pills-login" role="tabpanel" aria-labelledby="tab-login">
+                        
+                        <div class="text-center mb-3">
+                        <p>Sign in with:</p>
+                        <button type="button" class="btn btn-link btn-floating mx-1">
+                        
+                            <img src="{{ url_for('static', filename='icons/google.jpg') }}" alt="Google log in" height=25px>
+                        </button>
+                        
+                
+                        <button type="button" class="btn btn-link btn-floating mx-1">
+                            <img src="{{ url_for('static', filename='icons/fb.png') }}" alt="Facebook log in" height=25px>
+                        </button>
+
+                        </div>
+                
+                        <p class="text-center">or:</p>
+                        <form action="/login" method="POST">
+                        <!-- Email input -->
+                        <div class="form-outline mb-4">
+                        <input type="email" id="email" name="email" class="input form-control">
+                        <label class="form-label" for="email">Email:</label>
+                        </div>
+                
+                        <!-- Password input -->
+                        <div class="form-outline mb-4">
+                        <input type="password" id="password" name="password" class="input form-control">
+                        <label class="form-label" for="password">Password</label>
+                        </div>
+                
+                        <!-- 2 column grid layout -->
+                        <div class="row mb-4">
+                        <div class="col-md-6 d-flex justify-content-center">
+                            <!-- Checkbox -->
+                            <div class="form-check mb-3 mb-md-0">
+                            <input class="form-check-input" type="checkbox" value="" id="loginCheck" checked />
+                            <label class="form-check-label" for="loginCheck"> Remember me </label>
+                            </div>
+                        </div>
+                
+                        <div class="col-md-6 d-flex justify-content-center">
+                            <!-- Simple link -->
+                            <a href="#!">Forgot password?</a>
+                        </div>
+                        <p></p>
+                        <!-- Submit button -->
+                        <button type="submit" class="btn btn-primary btn-block mb-4 addon">Sign in</button>
+                        
+                    </form>
+                    {% with messages = get_flashed_messages() %}     <!-- declare a variable called messages -->
+                    {% if messages %}                            <!-- check if there are any messages -->
+                        <div>
+                        {% for message in messages %}            <!-- loop through the messages -->
+                            <h3>{{message}}</h3>                   <!-- display each message in a paragraph tag -->
+                        {% endfor %}
+                        </div>
+                        {% endif %}
+                    {% endwith %}
+                    
+                    </div>
+                    </div>
+                   
+                    <div class="tab-pane fade" id="pills-register" role="tabpanel" aria-labelledby="tab-register">
+                        <div class="text-center mb-3">
+                        <p>Sign up with:</p>
+                        <button type="button" class="btn btn-link btn-floating mx-1">
+                            <img src="{{ url_for('static', filename='icons/google.jpg') }}" alt="Google sign up" height=25px>
+                        </button>
+                
+                        <button type="button" class="btn btn-link btn-floating mx-1">
+                            <img src="{{ url_for('static', filename='icons/fb.png') }}" alt="Facebook sign up" height=25px>
+                        </button>
+
+                        </div>
+                
+                        <p class="text-center">or:</p>
+                
+                        <!-- Name input -->
+                        <form action="/create" method="POST">
+                            <div class="form-outline mb-4">
+                            <input type="text" name="first_name" id="first_name" class="input form-control">
+                            <label class="form-label" for="first_name">First Name</label>
+                            </div>
+
+                            <div class="form-outline mb-4">
+                            <input type="text" name="last_name" id="last_name" class="input form-control">
+                            <label class="form-label" for="last_name">Last Name</label>
+                            </div>
+                    
+                            <!-- Email input -->
+                            <div class="form-outline mb-4">
+                            <input type="email" name="email" id="email" class="input form-control">
+                            <label class="form-label" for="email">Email</label>
+                            </div>
+                            
+                            <!--Location input-->
+                            <div class="form-outline mb-4">
+                            <input type="text" name="location" id="location" class="input form-control">
+                            <label class="form-label" for="location">Zip code</label>
+                            </div>
+
+                            <!--birthday input-->
+                            <div class="form-outline mb-4">
+                            <input type="date" name="birthday" id="birthday" class="input form-control">
+                            <label class="form-label" for="birthday">Birthday</label>
+                            </div>
+                    
+                            <!-- Password input -->
+                            <div class="form-outline mb-4">
+                            <input type="password" name="password" id="password" class="input form-control">
+                            <label class="form-label" for="password">Password</label>
+                            </div>
+                    
+                            <!-- Repeat Password input -->
+                            <div class="form-outline mb-4">
+                            <input type="password" name="password2" id="password2" class="form-control">
+                            <label class="form-label" for="password2">Repeat password</label>
+                            </div>
+                    
+                            <!-- Checkbox -->
+                            <div class="form-check d-flex justify-content-center mb-4">
+                            <input class="form-check-input me-2" type="checkbox" value="" id="registerCheck" checked
+                                aria-describedby="registerCheckHelpText">
+                            <label class="form-check-label" for="registerCheck">
+                                I have read and agree to the terms
+                            </label>
+                        </div>
+                        <!-- Submit button -->
+                        <button type="submit" class="btn btn-primary btn-block mb-3">Sign up</button>
+                        </form>
+                    
+                        {% with messages = get_flashed_messages() %}     <!-- declare a variable called messages -->
+                        {% if messages %}                            <!-- check if there are any messages -->
+                            <div>
+                        {% for message in messages %}            <!-- loop through the messages -->
+                            <h3>{{message}}</h3>                   <!-- display each message in a paragraph tag -->
+                        {% endfor %}
+                            </div>
+                        {% endif %}
+                        {% endwith %}
+                        </div>        
+                </div>
+            </div>
+        </div>
+    </div>
+ 
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.0.0/mdb.min.js"></script>
+</body>
+</html>

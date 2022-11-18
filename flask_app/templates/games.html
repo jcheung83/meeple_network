@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='my_style.css') }}">
+    <title>Add Favorite Games</title>
+</head>
+<body>
+    <div class="container">
+    <nav aria-label="breadcrumb" class="main-breadcrumb right_side">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/map">Find Board Gamers in your Area</a></li>
+            <li class="breadcrumb-item"><a href="/dashboard">User Profile</a></li>
+            <li class="breadcrumb-item"><a href="/logout">Logout</a></li>
+        </ol>
+        </nav>
+   
+        <div class="login_box">
+
+                <h1>Add Favorite Games:</h1>
+                <label for="game_name">Game:</label>
+                <input type="text" name="game_name" id="game_name"><button class="open-button" onclick="search(name)">Search</button>
+                
+                <div id="search_results"></div>
+                
+                {% with messages = get_flashed_messages() %}     <!-- declare a variable called messages -->
+                {% if messages %}                            <!-- check if there are any messages -->
+                    <div>
+                    {% for message in messages %}            <!-- loop through the messages -->
+                        <h3>{{message}}</h3>                   <!-- display each message in a paragraph tag -->
+                    {% endfor %}
+                    </div>
+                    {% endif %}
+                {% endwith %}
+            </div>
+
+            <script src="{{ url_for('static', filename='myscript.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,54 @@
+*{
+    margin:0;
+    padding:0;
+}
+
+.login_box{
+    border:1px solid black;
+    
+    width: 600px;
+    margin: 0 auto;
+    padding: 50px;
+}
+
+.container{
+    padding: 10px;
+}
+
+.container_flex{
+    display: flex;
+}
+
+.top{
+    padding: 10px;
+}
+
+.addon{
+    margin: 0 auto;
+    width: 100%;
+}
+
+.blue{
+    background-color: blue;
+    color: white;
+    text-shadow: 1px black;
+    box-shadow: 2px 2px 2px black;
+    margin-top: 10px;
+}
+
+.center{
+    text-align: center;
+}
+
+.right-side{
+    justify-content: right;
+}
+
+.right-text{
+    text-align: right;
+}
+
+.container-spacebetween{
+    display: flex;
+    justify-content: space-between;
+}
